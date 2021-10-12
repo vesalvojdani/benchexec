@@ -103,7 +103,7 @@ flake8:
   stage: test
   image: python:3.8
   before_script:
-    - pip install flake8-awesome
+    - "pip install 'flake8<4' flake8-awesome"
   script:
     - flake8
   <<: *pip-cache
@@ -130,7 +130,6 @@ javascript-build:
   before_script:
     - cd benchexec/tablegenerator/react-table
     - npm install
-    - npm rebuild node-sass
   script:
     - npm run build
     - git diff --stat --exit-code
